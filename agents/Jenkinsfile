@@ -1,10 +1,20 @@
 pipeline{
     agent any
+
+    parameters {
+        string(name: 'NAME',default: '',descreption:'Plaes tell yur name')
+        booleanParam(name: 'SKIP_TET',default: 'false',descreption:'want to skip ')
+        choice(name: 'BRANCH',choices:['master','staging','prod'] '',descreption:'')
+
+    }
     stages {
         stage ('stage1'){
             steps{
                 sh 'sleep 5'
                 echo "This is the stage1"
+                echo "SKIP_TEST: ${params.SKIP_TEST}"
+                echo "NAME: ${params.NAME}"
+                echo "BRANCH TO DEPLOY: ${params.BRANCH}"
             }
         }
         stage ('stage2'){
