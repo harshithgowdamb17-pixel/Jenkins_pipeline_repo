@@ -3,7 +3,7 @@ pipeline {
 
     stages {
         stage('STAGE1') {
-            agent { label 'slave1' }
+            agent { label 'Jenkins_pipeline' }
             steps {
                 
                echo "This is the stage 1"
@@ -15,7 +15,7 @@ pipeline {
         }
         stage('Build') {
 
-            agent { label 'slave2' }
+            agent { label 'Pipeline_repo1' }
 
             steps {
                 echo "Building Java code"
