@@ -18,5 +18,16 @@ pipeline{
                 echo "This is the stage2"
             }
         }
+        stage ('stage3'){
+            steps{
+                sh '''
+                   #!/bin/bash
+                   pwd
+                   ls -lrt
+                   sleep 5
+                '''
+                echo "This is the stage3"
+            }
+        }
         }
     }
