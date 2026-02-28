@@ -21,10 +21,11 @@ pipeline {
         stage('stage2') {
             steps {
                 sh '''
-                    #!/bin/bash
-                    pwd
-                    ls -l
-                    sleep 5
+                 #!/bin/bash
+                 echo "This is stage1"
+                 echo "SKIP_TEST: ${SKIP_TEST}"
+                 echo "NAME: ${NAME}"
+                 echo "BRANCH TO DEPLOY: ${BRANCH}"
                 '''
                 echo "This is stage2"
             }
