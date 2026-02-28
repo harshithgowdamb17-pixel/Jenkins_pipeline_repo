@@ -3,8 +3,8 @@ pipeline{
 
     parameters {
         string(name: 'NAME',default: '',descreption:'Plaes tell yur name')
-        booleanParam(name: 'SKIP_TET',default: 'false',descreption:'want to skip ')
-        choice(name: 'BRANCH',choices:['master','staging','prod'] '',descreption:'')
+        booleanParam(name: 'SKIP_TET',defaultCalue: 'false',descreption:'want to skip ')
+        choice(name: 'BRANCH',choices:['master','staging','prod'],descreption:'')
 
     }
     stages {
