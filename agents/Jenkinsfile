@@ -1,32 +1,33 @@
-pipeline{
+pipeline {
     agent any
 
     parameters {
-        string(name: 'NAME',default: '',descreption:'Plaes tell yur name')
-        booleanParam(name: 'SKIP_TET',defaultCalue: 'false',descreption:'want to skip ')
-        choice(name: 'BRANCH',choices:['master','staging','prod'],descreption:'')
-
+        string(name: 'NAME', defaultValue: '', description: 'Please tell your name')
+        booleanParam(name: 'SKIP_TEST', defaultValue: false, description: 'Want to skip tests?')
+        choice(name: 'BRANCH', choices: ['master', 'staging', 'prod'], description: 'Select branch to deploy')
     }
+
     stages {
-        stage ('stage1'){
-            steps{
+        stage('stage1') {
+            steps {
                 sh 'sleep 5'
-                echo "This is the stage1"
+                echo "This is stage1"
                 echo "SKIP_TEST: ${params.SKIP_TEST}"
                 echo "NAME: ${params.NAME}"
                 echo "BRANCH TO DEPLOY: ${params.BRANCH}"
             }
         }
-        stage ('stage2'){
-            steps{
+
+        stage('stage2') {
+            steps {
                 sh '''
-                   #!/bin/bash
-                   pwd
-                   ls -l
-                   sleep 5
+                    #!/bin/bash
+                    pwd
+                    ls -l
+                    sleep 5
                 '''
-                echo "This is the stage2"
+                echo "This is stage2"
             }
         }
-        }
     }
+}
