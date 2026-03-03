@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-       DOCKER_USER = 'jaintpharsha'
-       AWS_ACCESS_KEY = '65197561895639156'  //just example in real you will get from jenkins credentials
+       DOCKER_USER = 'Harsha'
+       AWS_ACCESS_KEY = '789456123'  
     }
 
     stages {

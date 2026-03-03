@@ -1,6 +1,8 @@
 pipeline {
     agent any
-
+    triggers {
+        cron ('H/5 * * * * ')
+    }
     parameters {
         booleanParam(name: 'DEPLOY', description: 'Want to deploy to Production')
     }
@@ -69,3 +71,13 @@ pipeline {
         }
     }
 }
+
+//Pipeline starts
+
+//Repo is cloned
+
+//If branch = main → Stage1 runs
+
+//If environment = prod → Stage2 runs
+
+//If DEPLOY = true → Stage3 runs
