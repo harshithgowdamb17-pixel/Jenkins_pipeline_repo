@@ -1,24 +1,25 @@
 pipeline {
     agent any
+
     triggers {
-        cron (H/5 * * * * )
+        cron('H/5 * * * *')   // Runs every 5 minutes
     }
 
     stages {
         stage('STAGE1') {
             steps {
-               echo "This is the stage 1"
-               sh '''
+                echo "This is Stage 1"
+                sh '''
                     sleep 5
-                    echo "This is a linux command"
+                    echo "This is a Linux command"
                 '''
             }
         }
+
         stage('Build') {
             steps {
                 echo "Building Java code"
                 sh '''
-                    #!/bin/bash
                     sleep 5
                 '''
             }
