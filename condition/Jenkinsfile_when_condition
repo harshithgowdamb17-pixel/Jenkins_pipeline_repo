@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    triggers {
-        cron ('H/2 * * * * ')
-    }
     parameters {
         booleanParam(name: 'DEPLOY', description: 'Want to deploy to Production')
     }
