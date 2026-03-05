@@ -1,34 +1,33 @@
 pipeline {
     agent any
 
-    parameters {
-        string(name: 'NAME', defaultValue: '', description: 'Please tell your name')
-        booleanParam(name: 'SKIP_TEST', defaultValue: false, description: 'Want to skip tests?')
-        choice(name: 'BRANCH', choices: ['master', 'staging', 'prod'], description: 'Select branch to deploy')
+    options {
+        ansiColor('xterm')
     }
 
     stages {
-        stage('stage1') {
+
+        stage('STAGE1') {
             steps {
-                sh 'sleep 5'
-                echo "This is stage1"
-                echo "SKIP_TEST: ${params.SKIP_TEST}"
-                echo "NAME: ${params.NAME}"
-                echo "BRANCH TO DEPLOY: ${params.BRANCH}"
+                echo "\u001B[34mThis is the stage 1\u001B[0m"
+                sh '''
+                    sleep 5
+                    echo -e "\e[32mThis is a linux command\e[0m"
+                '''
             }
         }
 
-        stage('stage2') {
+        stage('Build') {
             steps {
+                echo "\u001B[33mBuilding Java code\u001B[0m"
                 sh '''
-                 #!/bin/bash
-                 echo "This is stage1"
-                 echo "SKIP_TEST: ${SKIP_TEST}"
-                 echo "NAME: ${NAME}"
-                 echo "BRANCH TO DEPLOY: ${BRANCH}"
+                    #!/bin/bash
+                    sleep 5
+                    echo -e "\e[31mBuild in progress...\e[0m"
+                    echo -e "\e[32mBuild Successful\e[0m"
                 '''
-                echo "This is stage2"
             }
         }
+
     }
 }
