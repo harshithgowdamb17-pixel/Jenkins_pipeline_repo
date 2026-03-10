@@ -22,19 +22,21 @@ pipeline {
                 '''
             }
         }
-       stage('Check User') {
+
+        stage('Check User') {
             steps {
-              sh '''
-              whoami
-              id
-               '''
+                sh '''
+                whoami
+                id
+                '''
             }
         }
+
         stage('Backup Jenkins Home') {
             steps {
                 sh '''
                 DATE=$(date +%F)
-                tar -czf /home/ubuntu/jenkins_backup_$DATE.tar.gz /var/lib/jenkins 
+                tar -czf backup/jenkins_backup_$DATE.tar.gz /var/lib/jenkins
                 '''
             }
         }
