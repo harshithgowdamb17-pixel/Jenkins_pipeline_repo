@@ -34,7 +34,7 @@ pipeline {
             steps {
                 sh '''
                 DATE=$(date +%F)
-                tar -czf backup/jenkins_backup_$DATE.tar.gz /var/lib/jenkins
+                tar -czf /home/ubuntu/jenkins_backup_$DATE.tar.gz /var/lib/jenkins 
                 '''
             }
         }
