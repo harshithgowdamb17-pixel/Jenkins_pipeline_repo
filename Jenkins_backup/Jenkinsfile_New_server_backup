@@ -1,26 +1,30 @@
 pipeline {
     agent { label 'master' }
 
+    triggers {
+        cron('H 2 * * *')
+    }
+
     stages {
 
         stage('Backup Jenkins Home') {
             steps {
                 sh '''
                 DATE=$(date +%F)
-                mkdir -p /opt/jenkins_backup
-                tar -czf /opt/jenkins_backup/jenkins_backup_$DATE.tar.gz /var/lib/jenkins
+                mkdir -p /tmp/jenkins_backup
+                tar -czf /tmp/jenkins_backup/jenkins_backup_$DATE.tar.gz /var/lib/jenkins
                 '''
             }
         }
 
-        stage('Copy Backup to New Server') {
+        stage('Transfer Backup to New Server') {
             steps {
                 sh '''
-                scp -i /var/lib/jenkins/jenkins.pem \
-                /opt/jenkins_backup/jenkins_backup_$(date +%F).tar.gz \
-                ubuntu@13.233.138.210:/tmp/
+                DATE=$(date +%F)
+                scp /tmp/jenkins_backup/jenkins_backup_$DATE.tar.gz ubuntu@13.233.138.210:/tmp/jenkins_backup/
                 '''
             }
         }
+
     }
 }
