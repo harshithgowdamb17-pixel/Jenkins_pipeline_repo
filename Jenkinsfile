@@ -1,5 +1,7 @@
 pipeline {
      agent none
+      echo "Branch detected: ${env.BRANCH_NAME}"
+      echo "Git branch: ${env.GIT_BRANCH}"
    // options {
     //     ansiColor('xterm')
     //     disableConcurrentBuilds(abortPrevious: true)
