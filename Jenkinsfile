@@ -1,7 +1,14 @@
 pipeline {
-     agent none
-      echo "Branch detected: ${env.BRANCH_NAME}"
-      echo "Git branch: ${env.GIT_BRANCH}"
+    agent none
+    stages {
+
+        stage('Check Branch') {
+            agent any
+            steps {
+                echo "Branch detected: ${env.BRANCH_NAME}"
+                echo "Git branch: ${env.GIT_BRANCH}"
+            }
+        }
    // options {
     //     ansiColor('xterm')
     //     disableConcurrentBuilds(abortPrevious: true)
@@ -44,4 +51,5 @@ pipeline {
         }
 
     }
+}
 }
