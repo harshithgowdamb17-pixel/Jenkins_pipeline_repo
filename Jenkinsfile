@@ -1,35 +1,43 @@
 pipeline {
-    agent any
-
-    options {
-        ansiColor('xterm')
-        disableConcurrentBuilds(abortPrevious: true)
-        buildDiscarder(logRotator(numToKeepStr: '2'))
-        disableResume()
-        timeout(time: 1, unit: 'MINUTES')
-        // retry(2)
-    }
+  //  agent any
+   // options {
+    //     ansiColor('xterm')
+    //     disableConcurrentBuilds(abortPrevious: true)
+    //     buildDiscarder(logRotator(numToKeepStr: '2'))
+    //     disableResume()
+    //     timeout(time: 1, unit: 'MINUTES')
+    //     // retry(2)
+    // }
 
     stages {
 
-        stage('STAGE1') {
+        stage('STAGE1 When branch harsha_banch01') {
+            agent { label 'slave1' }
+            when {
+                branch 'harsha_banch01'
+            }
             steps {
-                sh '''
-                    echo -e "\\033[34mThis is the stage 1\\033[0m"
+                echo "This is stage1 running"
+                sh ''' 
+                    pwd
+                    ls -lrt
                     sleep 5
-                    echo -e "\\033[32mThis is a linux command\\033[0m"
-                '''
+                 '''
             }
         }
 
-        stage('Build') {
+        stage('STAGE2 When branch main') {
+            agent { label 'slave2' }
+            when {
+                branch 'main'
+            }
             steps {
-                sh '''
-                    echo -e "\\033[33mBuilding Java code\\033[0m"
+                echo "This is stage2 running"
+                sh ''' 
+                    pwd
+                    ls -lrt
                     sleep 5
-                    echo -e "\\033[31mBuild in progress...\\033[0m"
-                    echo -e "\\033[32mBuild Successful\\033[0m"
-                '''
+                 '''
             }
         }
 
