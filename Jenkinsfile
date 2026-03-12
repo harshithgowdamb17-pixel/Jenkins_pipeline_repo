@@ -13,7 +13,7 @@ pipeline{
                    #!/bin/bash
                    pwd
                    ls -lrt
-                   sleep 5
+                   
                 '''
                 echo "This is the stage2"
             }
