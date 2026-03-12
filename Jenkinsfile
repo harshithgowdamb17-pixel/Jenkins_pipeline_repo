@@ -1,5 +1,5 @@
 pipeline {
-  //  agent any
+     agent none
    // options {
     //     ansiColor('xterm')
     //     disableConcurrentBuilds(abortPrevious: true)
@@ -29,7 +29,7 @@ pipeline {
         stage('STAGE2 When branch main') {
             agent { label 'slave2' }
             when {
-                branch 'main'
+                branch 'master/main'
             }
             steps {
                 echo "This is stage2 running"
