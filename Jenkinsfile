@@ -38,7 +38,6 @@ pipeline {
 
                 sh '''
                 pwd
-                ls -lrt
                 sleep 5
                 '''
             }
